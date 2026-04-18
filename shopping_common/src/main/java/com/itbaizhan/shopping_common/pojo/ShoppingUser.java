@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * 商城用户
  */
 @Data
+@TableName("bz_shopping_user")
 public class ShoppingUser implements Serializable {
     @TableId
     private Long id; // 用户id

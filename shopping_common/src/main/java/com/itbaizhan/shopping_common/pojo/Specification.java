@@ -2,6 +2,7 @@ package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.List;
  * 规格
  */
 @Data
+@TableName("bz_specification")
 public class Specification implements Serializable{
     @TableId
     private Long id; // 规格id

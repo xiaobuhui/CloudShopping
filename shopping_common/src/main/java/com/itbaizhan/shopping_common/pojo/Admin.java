@@ -2,6 +2,7 @@ package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.List;
  * 后台管理员用户
  */
 @Data
+@TableName("bz_admin")
 public class Admin implements Serializable {
     @TableId
     private Long aid; // 用户id

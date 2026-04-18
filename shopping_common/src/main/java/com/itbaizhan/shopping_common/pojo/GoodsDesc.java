@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Data
 public class GoodsDesc implements Serializable {
+    @TableId
     private Long id; // 商品id
     private String goodsName; // 商品名称
     private String caption; // 副标题

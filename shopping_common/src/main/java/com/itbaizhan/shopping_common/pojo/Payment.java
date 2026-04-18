@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.Date;
  * 支付记录
  */
 @Data
+@TableName("bz_payment")
 public class Payment implements Serializable {
     // 支付记录id
     @TableId

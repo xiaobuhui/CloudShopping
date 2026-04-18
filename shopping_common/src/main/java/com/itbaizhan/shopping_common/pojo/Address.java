@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * 收货地址
  */
 @Data
+@TableName("bz_address")
 public class Address implements Serializable {
     @TableId
     private Long id; // 地址id

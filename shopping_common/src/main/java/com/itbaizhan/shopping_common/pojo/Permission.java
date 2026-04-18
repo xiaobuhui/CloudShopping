@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * 后台管理员权限
  */
 @Data
+@TableName("bz_permission")
 public class Permission implements Serializable {
     @TableId
     private Long pid; // 权限id

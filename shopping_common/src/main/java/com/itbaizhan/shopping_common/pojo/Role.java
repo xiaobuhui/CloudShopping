@@ -2,6 +2,7 @@ package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.List;
  * 后台管理员角色
  */
 @Data
+@TableName("bz_role")
 public class Role implements Serializable {
     @TableId
     private Long rid; // 角色id

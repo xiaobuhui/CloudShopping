@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -12,6 +13,7 @@ import java.util.Date;
  * 秒杀商品
  */
 @Data
+@TableName("bz_seckill_goods")
 public class SeckillGoods implements Serializable{
     @TableId
     private Long id; // 秒杀商品Id

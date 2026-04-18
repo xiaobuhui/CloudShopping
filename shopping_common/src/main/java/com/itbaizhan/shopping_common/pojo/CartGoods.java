@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
  * 购物车商品/订单商品
  */
 @Data
+@TableName("bz_cart_goods")
 public class CartGoods implements Serializable {
     @TableId
     private Long id;

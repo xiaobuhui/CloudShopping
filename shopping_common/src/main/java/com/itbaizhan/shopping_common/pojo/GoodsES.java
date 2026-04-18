@@ -1,6 +1,7 @@
 package com.itbaizhan.shopping_common.pojo;
 
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.CompletionField;
 import org.springframework.data.elasticsearch.annotations.Document;
