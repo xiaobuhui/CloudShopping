@@ -4,13 +4,17 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.itbaizhan.shopping_admin_service.mapper.RoleMapper;
 import com.itbaizhan.shopping_common.pojo.Role;
 import com.itbaizhan.shopping_common.service.RoleService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
 
+@Slf4j
+@DubboService
 public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleMapper roleMapper;
+
     @Override
     public void add(Role role) {
         roleMapper.insert(role);
