@@ -17,6 +17,8 @@
         <module>shopping_goods_service</module>
         <!-- 管理员管理网站操作的api -->
         <module>shopping_manager_api</module>
+        <!-- 管理员服务 -->
+        <module>shopping_admin_service</module>
     </modules>
 
     <properties>

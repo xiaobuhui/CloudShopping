@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itbaizhan.shopping_admin_service.mapper.AdminMapper">
+
+    <!--根据id删除管理员和管理员的关联表数据-->
+    <delete id="deleteAdminAllRole" parameterType="long">
+        DELETE
+        FROM bz_admin_role
+        WHERE aid = #{aid}
+    </delete>
+
+    <!--根据id查询管理员，包括角色和权限-->
+    <resultMap id="adminMapper" type="com.itbaizhan.shopping_common.pojo.Admin">
+        <id property="aid" column="aid"></id>
+        <result property="username" column="username"></result>
+        <collection property="roles" column="aid" ofType="com.itbaizhan.shopping_common.pojo.Role">
+            <id property="rid" column="rid"></id>
+            <result property="roleName" column="roleName"></result>
+            <result property="roleDesc" column="roleDesc"></result>
+            <collection property="permissions" column="rid" ofType="com.itbaizhan.shopping_common.pojo.Permission">
+                <id property="pid" column="pid"></id>
+                <result property="permissionName" column="permissionName"></result>
+                <result property="url" column="url"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findById" parameterType="long" resultMap="adminMapper">
+        SELECT * FROM bz_admin
+        LEFT JOIN bz_admin_role on bz_admin.aid = bz_admin_role.aid
+        LEFT JOIN bz_role on bz_admin_role.rid = bz_role.rid
+        LEFT JOIN bz_role_permission on bz_role.rid = bz_role_permission.rid
+        LEFT JOIN bz_permission on bz_role_permission.pid = bz_permission.pid
+        WHERE bz_admin.aid = #{aid}
+    </select>
+
+    <!--给管理员添加角色-->
+    <insert id="addRoleToAdmin">
+        INSERT INTO bz_admin_role VALUES(#{aid},#{rid});
+    </insert>
+
+</mapper>
