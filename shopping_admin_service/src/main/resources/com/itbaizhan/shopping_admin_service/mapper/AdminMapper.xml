@@ -41,4 +41,21 @@
         INSERT INTO bz_admin_role VALUES(#{aid},#{rid});
     </insert>
 
+    <!--根据管理员名查询权限-->
+    <select id="findAllPermission" resultType="com.itbaizhan.shopping_common.pojo.Permission" parameterType="string">
+        SELECT
+            DISTINCT bz_permission.*
+        FROM
+            bz_admin
+                LEFT JOIN bz_admin_role
+                          ON bz_admin.aid = bz_admin_role.aid
+                LEFT JOIN bz_role
+                          ON bz_admin_role.rid = bz_role.rid
+                LEFT JOIN bz_role_permission
+                          ON bz_role.rid = bz_role_permission.rid
+                LEFT JOIN bz_permission
+                          ON bz_role_permission.pid = bz_permission.pid
+        WHERE bz_admin.username = #{username}
+    </select>
+
 </mapper>

@@ -5,6 +5,7 @@ import com.itbaizhan.shopping_common.pojo.Role;
 import com.itbaizhan.shopping_common.result.BaseResult;
 import com.itbaizhan.shopping_common.service.RoleService;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -69,6 +70,8 @@ public class RoleController {
      * @return 查询结果
      */
     @GetMapping("/search")
+    //在方法执行前，校验当前登录用户是否拥有指定的权限，如果没有就直接拒绝访问（返回 403）
+    @PreAuthorize("hasAnyAuthority('/role/all')")
     public BaseResult<Page<Role>> search(int page, int size) {
         Page<Role> page1 = roleService.search(page, size);
         return BaseResult.ok(page1);

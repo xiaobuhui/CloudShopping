@@ -14,7 +14,7 @@
         </collection>
     </resultMap>
 
-
+    <!-- 根据id查询角色，包括权限 -->
     <select id="findById" parameterType="long" resultMap="roleMapper">
         SELECT *
         FROM bz_role
@@ -25,20 +25,20 @@
         WHERE bz_role.rid = #{rid}
     </select>
 
-
+    <!-- 删除角色的所有权限 -->
     <delete id="deleteRoleAllPermission" parameterType="long">
         DELETE
         FROM bz_role_permission
         WHERE rid = #{rid}
     </delete>
-
+    <!-- 删除用户_角色表的相关数据 -->
     <delete id="deleteRoleAllAdmin" parameterType="long">
         DELETE
         FROM bz_admin_role
         where rid = #{rid}
     </delete>
 
-
+    <!-- 给角色添加权限 -->
     <insert id="addPermissionToRole">
         INSERT INTO bz_role_permission
         VALUES (#{rid}, #{pid});

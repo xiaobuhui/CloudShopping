@@ -5,6 +5,14 @@ import com.itbaizhan.shopping_common.pojo.Admin;
 import com.itbaizhan.shopping_common.result.BaseResult;
 import com.itbaizhan.shopping_common.service.AdminService;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,6 +23,9 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
     @DubboReference
     private AdminService adminService;
+    // security的加密工具
+    @Autowired
+    private PasswordEncoder encoder;
 
     /**
      *      * 新增管理员
@@ -23,6 +34,9 @@ public class AdminController {
      *      */
     @PostMapping("/add")
     public BaseResult add(@RequestBody Admin admin) {
+        String password = admin.getPassword();
+        password = encoder.encode(password);
+        admin.setPassword(password);
         adminService.add(admin);
         return BaseResult.ok();
     }
@@ -34,6 +48,13 @@ public class AdminController {
      */
     @PutMapping("/update")
     public BaseResult update(@RequestBody Admin admin) {
+        String password = admin.getPassword();
+        //hasText判断字符串是否非空、非空白相当于!= null && !isEmpty()
+        if (StringUtils.hasText(password)){ // 密码不为空加密
+            password = encoder.encode(password);
+            admin.setPassword(password);
+        }
+        //这里密码可能为空，所以我们在service中设置为空的话用旧密码
         adminService.update(admin);
         return BaseResult.ok();
     }
@@ -67,6 +88,7 @@ public class AdminController {
      * @return 查询结果
      */
     @GetMapping("/search")
+    @PreAuthorize("hasAnyAuthority('/admin/all')")
     public BaseResult<Page<Admin>> search(int page, int size) {
         Page<Admin> adminPage = adminService.search(page, size);
         return BaseResult.ok(adminPage);
@@ -83,4 +105,21 @@ public class AdminController {
         adminService.updateRoleToAdmin(aid,rids);
         return BaseResult.ok();
     }
+
+    /**
+     * 获取登录管理员名
+     * @return 管理员名
+     */
+    @GetMapping("/getUsername")
+    public BaseResult<String> getUsername() {
+        // 1.获取会话对象
+        SecurityContext context = SecurityContextHolder.getContext();
+        // 2.获取认证对象
+        Authentication authentication = context.getAuthentication();
+        // 3.获取登录用户信息
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        return BaseResult.ok(username);
+    }
+
 }
