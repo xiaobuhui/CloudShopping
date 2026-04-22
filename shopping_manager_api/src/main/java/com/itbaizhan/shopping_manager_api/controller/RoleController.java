@@ -71,7 +71,7 @@ public class RoleController {
      */
     @GetMapping("/search")
     //在方法执行前，校验当前登录用户是否拥有指定的权限，如果没有就直接拒绝访问（返回 403）
-    @PreAuthorize("hasAnyAuthority('/role/all')")
+    @PreAuthorize("hasAnyAuthority('/role/search')")
     public BaseResult<Page<Role>> search(int page, int size) {
         Page<Role> page1 = roleService.search(page, size);
         return BaseResult.ok(page1);

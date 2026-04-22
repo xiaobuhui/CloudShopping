@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.itbaizhan.shopping_common.pojo.Admin;
 import com.itbaizhan.shopping_common.result.BaseResult;
 import com.itbaizhan.shopping_common.service.AdminService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 后台管理员
  */
+@Slf4j
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -37,6 +39,8 @@ public class AdminController {
         String password = admin.getPassword();
         password = encoder.encode(password);
         admin.setPassword(password);
+        //log.info("新增管理员:{}",admin.getUsername());
+        //log.info("加密后的密码:{}",admin.getPassword());
         adminService.add(admin);
         return BaseResult.ok();
     }
@@ -88,7 +92,7 @@ public class AdminController {
      * @return 查询结果
      */
     @GetMapping("/search")
-    @PreAuthorize("hasAnyAuthority('/admin/all')")
+    @PreAuthorize("hasAnyAuthority('/admin/search')")
     public BaseResult<Page<Admin>> search(int page, int size) {
         Page<Admin> adminPage = adminService.search(page, size);
         return BaseResult.ok(adminPage);
