@@ -19,6 +19,8 @@
         <module>shopping_manager_api</module>
         <!-- 管理员服务 -->
         <module>shopping_admin_service</module>
+        <!-- 文件服务 -->
+        <module>shopping_file_service</module>
     </modules>
 
     <properties>

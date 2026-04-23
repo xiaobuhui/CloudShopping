@@ -18,7 +18,9 @@ public enum CodeEnum {
     //添加商品类型异常
     INSERT_PRODUCT_TYPE_ERROR(602, "3级商品类型不能添加子类型"),
     //删除商品类型异常
-    DELETE_PRODUCT_TYPE_ERROR(603, "该商品类型有子类型，不能删除")
+    DELETE_PRODUCT_TYPE_ERROR(603, "该商品类型有子类型，不能删除"),
+    // 文件上传异常
+    UPLOAD_FILE_ERROR(604,"文件上传异常")
     ;
 
     private final Integer code;
