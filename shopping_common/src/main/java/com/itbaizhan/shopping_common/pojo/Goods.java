@@ -27,7 +27,7 @@ public class Goods implements Serializable {
     private String headerPic; // 头图
     private Boolean isMarketable; // 是否上架
     private String introduction; // 商品介绍
-    @TableField(exist = false)
+    @TableField(exist = false)//表明要插入的表没这个字段，忽略即可
     private List<GoodsImage> images; // 商品图片
     @TableField(exist = false)
     private List<Specification> specifications; // 商品规格

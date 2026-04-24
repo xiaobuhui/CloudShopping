@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itbaizhan.shopping_goods_service.mapper.GoodsMapper">
+    <!-- 添加商品_规格项数据 -->
+    <insert id="addGoodsSpecificationOption">
+        INSERT INTO bz_goods_specification_option VALUES(#{gid},#{optionId})
+    </insert>
+    <!-- 删除商品下的所有规格项 -->
+    <delete id="deleteGoodsSpecificationOption" parameterType="java.lang.Long">
+        DELETE FROM bz_goods_specification_option WHERE gid = #{gid}
+    </delete>
+    <!-- 商品上/下架 -->
+    <update id="putAway">
+        UPDATE bz_goods SET isMarketable = #{isMarketable} WHERE id = #{id}
+    </update>
+
+    <!-- 根据id查询商品详情Map映射 -->
+    <!--讲解，resultMap只起映射作用，property是商品实体的属性，
+    column是查询结构集合的字段名，就是查完返回数据的字段名。
+    不起id是因为5个id会冲突，所以起别的id名
+    -->
+    <resultMap id="goodsMapper" type="com.itbaizhan.shopping_common.pojo.Goods">
+        <id property="id" column="bid"></id>
+        <result property="goodsName" column="goodsName"></result>
+        <result property="caption" column="caption"></result>
+        <result property="price" column="price"></result>
+        <result property="headerPic" column="headerPic"></result>
+        <result property="isMarketable" column="isMarketable"></result>
+        <result property="brandId" column="brandId"></result>
+        <result property="productType1Id" column="productType1Id"></result>
+        <result property="productType2Id" column="productType2Id"></result>
+        <result property="productType3Id" column="productType3Id"></result>
+        <result property="introduction" column="introduction"></result>
+        <collection property="images" column="bid" ofType="com.itbaizhan.shopping_common.pojo.GoodsImage">
+            <id property="id" column="imageId"></id>
+            <result property="imageTitle" column="imageTitle"></result>
+            <result property="imageUrl" column="imageUrl"></result>
+        </collection>
+        <collection property="specifications" column="bid" ofType="com.itbaizhan.shopping_common.pojo.Specification">
+            <id property="id" column="specificationId"></id>
+            <result property="specName" column="specName"></result>
+            <result property="productTypeId" column="productTypeId"></result>
+            <collection property="specificationOptions" column="specificationId" ofType="com.itbaizhan.shopping_common.pojo.SpecificationOption">
+                <id property="id" column="optionId"></id>
+                <result property="optionName" column="optionName"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <!-- 根据id查询商品详情 -->
+    <!--讲解
+    `	反引号	包裹字段名、表名
+    '	单引号	包裹字符串值
+    "	双引号	一般不用
+    这些可加可不加
+    然后where条件必须是数据库的字段名，不能用别名
+    查询后的数据可起别名，然后因为别名相同映射到实体类中
+    -->
+    <select id="findById" resultMap="goodsMapper">
+        SELECT
+            bz_goods.`id` bid,
+            bz_goods.`goodsName` goodsName,
+            bz_goods.`caption` caption,
+            bz_goods.`price` price,
+            bz_goods.`headerPic` headerPic,
+            bz_goods.`introduction` introduction,
+            bz_goods.`isMarketable` isMarketable,
+            bz_goods.`brandId` brandId,
+            bz_goods.`productType1Id` productType1Id,
+            bz_goods.`productType2Id` productType2Id,
+            bz_goods.`productType3Id` productType3Id,
+            bz_goods_image.`id` imageId,
+            bz_goods_image.`imageTitle` imageTitle,
+            bz_goods_image.`imageUrl` imageUrl,
+            bz_specification.`id` specificationId,
+            bz_specification.`specName` specName,
+            bz_specification.`productTypeId` productTypeId,
+            bz_specification_option.`id` optionId,
+            bz_specification_option.`optionName` optionName
+        FROM
+            bz_goods,
+            bz_goods_specification_option,
+            bz_specification_option,
+            bz_specification,
+            bz_goods_image
+        WHERE bz_goods.`id` = bz_goods_specification_option.`gid`
+          AND bz_goods_specification_option.`optionId` = bz_specification_option.`id`
+          AND bz_specification.`id` = bz_specification_option.`specId`
+          AND bz_goods.`id` = bz_goods_image.`goodsId`
+          AND bz_goods.id = #{gid}
+    </select>
+
+</mapper>
