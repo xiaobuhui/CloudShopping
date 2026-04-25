@@ -21,6 +21,10 @@
         <module>shopping_admin_service</module>
         <!-- 文件服务 -->
         <module>shopping_file_service</module>
+        <!-- 广告服务 -->
+        <module>shopping_category_service</module>
+        <!-- 网站用户操作广告暴露的api -->
+        <module>shopping_category_customer_api</module>
     </modules>
 
     <properties>
