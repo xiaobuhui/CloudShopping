@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/shopping_manager_api/pom.xml" />
         <option value="$PROJECT_DIR$/shopping_admin_service/pom.xml" />
         <option value="$PROJECT_DIR$/shopping_category_service/pom.xml" />
+        <option value="$PROJECT_DIR$/shopping_search_customer_api/pom.xml" />
       </list>
     </option>
   </component>

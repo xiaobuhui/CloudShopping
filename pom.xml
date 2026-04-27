@@ -25,6 +25,10 @@
         <module>shopping_category_service</module>
         <!-- 网站用户操作广告暴露的api -->
         <module>shopping_category_customer_api</module>
+        <!-- 搜索服务 -->
+        <module>shopping_search_service</module>
+        <!-- 用户搜索暴露的api -->
+        <module>shopping_search_customer_api</module>
     </modules>
 
     <properties>

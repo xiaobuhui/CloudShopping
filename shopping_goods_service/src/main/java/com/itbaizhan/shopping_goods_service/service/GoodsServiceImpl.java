@@ -2,10 +2,7 @@ package com.itbaizhan.shopping_goods_service.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.itbaizhan.shopping_common.pojo.Goods;
-import com.itbaizhan.shopping_common.pojo.GoodsImage;
-import com.itbaizhan.shopping_common.pojo.Specification;
-import com.itbaizhan.shopping_common.pojo.SpecificationOption;
+import com.itbaizhan.shopping_common.pojo.*;
 import com.itbaizhan.shopping_common.service.GoodsService;
 import com.itbaizhan.shopping_goods_service.mapper.GoodsImageMapper;
 import com.itbaizhan.shopping_goods_service.mapper.GoodsMapper;
@@ -104,5 +101,15 @@ public class GoodsServiceImpl implements GoodsService {
         }
         Page<Goods> page1 = goodsMapper.selectPage(new Page(page, size), queryWrapper);
         return page1;
+    }
+
+    @Override
+    public List<GoodsDesc> findAll() {
+        return goodsMapper.findAll();
+    }
+
+    @Override
+    public GoodsDesc findDesc(Long id) {
+        return goodsMapper.findDesc(id);
     }
 }

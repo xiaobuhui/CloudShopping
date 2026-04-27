@@ -30,8 +30,10 @@ public class GoodsES implements Serializable {
     private String headerPic; // 头图
     @Field
     private String brand; // 品牌名称
+    //这个注解是用于自动补全
+    //当用户输入关键词时，提供类似搜索引擎的"联想词"或"自动补全"功能。
     @CompletionField
-    private List<String> tags; // 关键字
+    private List<String> tags; // 关键字，存储多个标签、关键字、热词
     @Field
     private List<String> productType; // 类目名
     @Field
