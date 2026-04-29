@@ -371,6 +371,6 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public void delete(Long id) {
-
+        goodsESRepository.deleteById(id);
     }
 }

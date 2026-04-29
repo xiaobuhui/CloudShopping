@@ -1,0 +1,2 @@
+org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration
+#spingboot3和rocketmq的bug，sb3默认不加载rocketmq的自动配置
