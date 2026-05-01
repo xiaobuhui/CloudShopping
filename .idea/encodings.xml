@@ -15,10 +15,16 @@
     <file url="file://$PROJECT_DIR$/shopping_goods_service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_manager_api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_manager_api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_message_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_message_service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_search_customer_api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_search_customer_api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_search_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_search_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_user_customer_api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_user_customer_api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_user_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_user_service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

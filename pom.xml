@@ -29,6 +29,12 @@
         <module>shopping_search_service</module>
         <!-- 用户搜索暴露的api -->
         <module>shopping_search_customer_api</module>
+        <!-- 短信服务 -->
+        <module>shopping_message_service</module>
+        <!-- 用户服务 -->
+        <module>shopping_user_service</module>
+        <!-- 用户业务的api -->
+        <module>shopping_user_customer_api</module>
     </modules>
 
     <properties>
