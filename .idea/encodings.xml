@@ -3,6 +3,10 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/shopping_admin_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_admin_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_cart_customer_api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_cart_customer_api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_cart_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shopping_cart_service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_category_customer_api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_category_customer_api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shopping_category_service/src/main/java" charset="UTF-8" />

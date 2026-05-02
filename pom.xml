@@ -35,6 +35,10 @@
         <module>shopping_user_service</module>
         <!-- 用户业务的api -->
         <module>shopping_user_customer_api</module>
+        <!-- 购物车服务 -->
+        <module>shopping_cart_service</module>
+        <!-- 购物车api -->
+        <module>shopping_cart_customer_api</module>
     </modules>
 
     <properties>
