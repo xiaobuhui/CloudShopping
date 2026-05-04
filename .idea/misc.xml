@@ -12,6 +12,9 @@
         <option value="$PROJECT_DIR$/shopping_user_service/pom.xml" />
         <option value="$PROJECT_DIR$/shopping_user_customer_api/pom.xml" />
         <option value="$PROJECT_DIR$/shopping_cart_customer_api/pom.xml" />
+        <option value="$PROJECT_DIR$/shopping_order_service/pom.xml" />
+        <option value="$PROJECT_DIR$/shopping_order_customer_api/pom.xml" />
+        <option value="$PROJECT_DIR$/shopping_pay_service/pom.xml" />
       </list>
     </option>
   </component>

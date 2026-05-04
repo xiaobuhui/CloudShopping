@@ -39,6 +39,12 @@
         <module>shopping_cart_service</module>
         <!-- 购物车api -->
         <module>shopping_cart_customer_api</module>
+        <!-- 订单服务 -->
+        <module>shopping_order_service</module>
+        <!-- 订单api -->
+        <module>shopping_order_customer_api</module>
+        <!-- 支付服务 -->
+        <module>shopping_pay_service</module>
     </modules>
 
     <properties>

@@ -1,0 +1,59 @@
+<mapper namespace="com.itbaizhan.shopping_order_service.mapper.OrdersMapper">
+    <resultMap id="ordersMapper" type="com.itbaizhan.shopping_common.pojo.Orders">
+        <id property="id" column="id"></id>
+        <result property="payment" column="payment"></result>
+        <result property="paymentType" column="paymentType"></result>
+        <result property="postFee" column="postFee"></result>
+        <result property="status" column="status"></result>
+        <result property="createTime" column="createTime"></result>
+        <result property="paymentTime" column="paymentTime"></result>
+        <result property="consignTime" column="consignTime"></result>
+        <result property="endTime" column="endTime"></result>
+        <result property="closeTime" column="closeTime"></result>
+        <result property="shippingName" column="shippingName"></result>
+        <result property="shippingCode" column="shippingCode"></result>
+        <result property="userId" column="userId"></result>
+        <result property="buyerMessage" column="buyerMessage"></result>
+        <result property="buyerNick" column="buyerNick"></result>
+        <result property="receiverAreaName" column="receiverAreaName"></result>
+        <result property="receiverMobile" column="receiverMobile"></result>
+        <result property="receiverZipCode" column="receiverZipCode"></result>
+        <result property="receiver" column="receiver"></result>
+        <result property="expire" column="expire"></result>
+        <collection property="cartGoods" column="orderId" ofType="com.itbaizhan.shopping_common.pojo.CartGoods">
+            <result property="goodId" column="goodId"></result>
+            <result property="goodsName" column="goodsName"></result>
+            <result property="price" column="price"></result>
+            <result property="headerPic" column="headerPic"></result>
+            <result property="num" column="num"></result>
+            <result property="orderId" column="orderId"></result>
+        </collection>
+    </resultMap>
+    <!-- 查询订单详情 -->
+    <select id="findById" parameterType="string" resultMap="ordersMapper">
+        SELECT
+        *
+        FROM
+        bz_orders
+        LEFT JOIN bz_cart_goods
+        ON bz_orders.id = bz_cart_goods.orderId
+        where bz_orders.id = #{id}
+    </select>
+
+    <!-- 查询用户订单 -->
+    <select id="findOrdersByUserIdAndStatus" resultMap="ordersMapper">
+        SELECT
+        *
+        FROM
+        bz_orders
+        LEFT JOIN bz_cart_goods
+        ON bz_orders.id = bz_cart_goods.orderId
+        <where>
+            bz_orders.userId = #{userId}
+            <if test="status != null">
+                and bz_orders.status = #{status}
+            </if>
+        </where>
+    </select>
+
+</mapper>
