@@ -45,10 +45,23 @@
         <module>shopping_order_customer_api</module>
         <!-- 支付服务 -->
         <module>shopping_pay_service</module>
+        <!-- 秒杀服务 -->
+        <module>shopping_seckill_service</module>
+        <!-- 秒杀api -->
+        <module>shopping_seckill_customer_api</module>
+        <!-- 网络钩子 -->
+        <module>shopping_webhooks</module>
+        <!-- 邮件服务 -->
+        <module>shopping_mail_service</module>
+        <!-- 客服服务 -->
+        <module>shopping_custcare_service</module>
+        <!-- 客服api -->
+        <module>shopping_custcare_customer_api</module>
     </modules>
 
     <properties>
-        <java.version>17</java.version>
+        <!--旧的依赖-->
+        <!--<java.version>17</java.version>
         <dubbo.version>3.2.4</dubbo.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -56,7 +69,18 @@
         <spring-cloud.version>2022.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
         <lombok.version>1.18.28</lombok.version>
-        <mybatis-plus.version>3.5.4</mybatis-plus.version>
+        <mybatis-plus.version>3.5.4</mybatis-plus.version>-->
+
+        <!--升级一下-->
+        <java.version>17</java.version>
+        <dubbo.version>3.3.0</dubbo.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>3.3.4</spring-boot.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
+        <lombok.version>1.18.32</lombok.version>
+        <mybatis-plus.version>3.5.11</mybatis-plus.version>
     </properties>
 
     <!-- 依赖版本声明 -->
@@ -126,6 +150,21 @@
     <!-- 插件 -->
     <build>
         <plugins>
+            <!--新版的springboot与mvc不再支持参数名相同就自动匹配，要求全部
+            用@RequestParam显示匹配或者用这个插件啥的-->
+            <!-- 允许控制器省略显式指定参数名称 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <parameters>true</parameters>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

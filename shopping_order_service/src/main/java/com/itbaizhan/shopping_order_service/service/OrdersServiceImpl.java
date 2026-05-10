@@ -26,8 +26,10 @@ public class OrdersServiceImpl implements OrdersService {
     private final String CHECK_ORDERS_QUEUE= "check_orders_queue";
     @Override
     public Orders add(Orders orders) {
-        // 订单状态未付款
-        orders.setStatus(1);
+        // 如果订单没设置状态，给订单状态设置为未付款
+        if (orders.getStatus() == null){
+            orders.setStatus(1);
+        }
         // 订单创建时间
         orders.setCreateTime(new Date());
         // 计算订单价格，遍历订单所有商品

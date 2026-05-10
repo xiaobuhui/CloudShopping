@@ -41,8 +41,14 @@ public enum CodeEnum {
     CHECK_SIGN_ERROR(613,"支付宝验签异常"),
     //订单不能重复支付(状态异常)
     ORDER_STATUS_ERROR(614,"订单状态异常，不能重复支付"),
+    //库存不足异常
+    NO_STOCK_ERROR(615,"商品库存不足"),
+    //订单已过期异常
+    ORDER_EXPIRED_ERROR(616,"订单已过期"),
+    //邮件发送异常
+    MAIL_SEND_ERROR(617,"邮件发送异常"),
     //登录输入的验证码过期
-    LOGIN_CODE_EXPIRE(614,"登录验证码过期"),
+    LOGIN_CODE_EXPIRE(618,"登录验证码过期"),
     ;
 
     private final Integer code;

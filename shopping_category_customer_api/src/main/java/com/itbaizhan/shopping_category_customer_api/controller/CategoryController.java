@@ -24,6 +24,12 @@ public class CategoryController {
      */
     @GetMapping("/all")
     public BaseResult<List<Category>> findAll() {
+/*        //测试skywalking报警的
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }*/
         List<Category> categories = categoryService.findAll();
         return BaseResult.ok(categories);
     }
